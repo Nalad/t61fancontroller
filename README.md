@@ -14,6 +14,8 @@ T61 under Linux.
 
 ### Usage
 
+U have to run it with root privilages because we are messing with /proc files
+
     usage: main arg1 arg2 arg3
 
     arguments:

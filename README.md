@@ -10,8 +10,6 @@ T61 under Linux.
 
 ### Compilation
 
-::
-    
     make
 
 ### Usage

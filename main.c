@@ -5,7 +5,7 @@
 #include <stdbool.h>
 
 #define AUTO_SPEED 10
-#define NO_FAN_SPEED 0
+#define TURNED_OFF 0
 
 void change_speed(int speed);
 
@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
                     "You are not running kernel with Thinkpad patch!\n");
             return EXIT_FAILURE;
         }
-        // if something strange happened
-        int temp = safe_temp + 1;
+        
+        int temp = safe_temp + 1; // if something strange happened
         fscanf(temp_input,"temperatures: %d", &temp);
         fclose(temp_input);
 
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
             change_speed(AUTO_SPEED);
             is_auto = true;
         } else if (temp <= safe_temp) {
-            change_speed(NO_FAN_SPEED);
+            change_speed(TURNED_OFF);
             is_auto = false;
         }
 
@@ -60,7 +60,7 @@ void change_speed(int speed) {
 
     switch(speed) {
         case AUTO_SPEED:    strcpy(speed_string, "auto"); break;
-        case 0:             strcpy(speed_string, "0"); break;
+        case TURNED_OFF:    strcpy(speed_string, "0"); break;
         default:            fprintf(stderr, "Error in change_speed");
     }
 

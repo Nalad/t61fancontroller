@@ -11,10 +11,13 @@ void change_speed(int speed);
 
 int main(int argc, char *argv[])
 {
-    if (argc != 4) {
+    if (argc < 4) {
         fprintf(stderr, "Too few arguments.\n");
         return EXIT_FAILURE;
-    }
+    } else if (argc > 4) {
+		fprintf(stderr, "Too many arguments.\n");
+		return EXIT_FAILURE;
+	}
 
     int sleep_no_fan = atoi(argv[1]);
     int sleep_auto_fan = atoi(argv[2]);
